@@ -1,4 +1,4 @@
-const { db, DataTypes } = require('../db/connection');
+const { db, DataTypes } = require('../db');
 
 const Sauce = db.define("sauces", {
   name: DataTypes.STRING,

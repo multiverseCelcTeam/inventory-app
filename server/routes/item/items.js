@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Item } = require("../models");
+const { Item } = require("../../models");
 
 // GET /sauce
 router.get("/", async (req, res, next) => {
@@ -21,6 +21,16 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.post("/", async (req,res, next) => {
+  try{
+    const newItem = await Item.create(req.body);
+    res.json(newItem);
+  }
+  catch(error){
+    next(error);
+  }
+});
+
 router.put("/:id", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.id);
@@ -30,6 +40,7 @@ router.put("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
 router.delete("/:id", async (req, res, next) => {
   try{
     const item = await Item.findByPk(req.params.id);
@@ -40,15 +51,5 @@ router.delete("/:id", async (req, res, next) => {
     next(error);
   }
 });
-router.post("/", async (req,res, next) => {
-  try{
-    const newItem = await Item.create(req.body);
-    res.json(newItem);
-  }
-  catch(error){
-    next(error);
-  }
-})
-
 
 module.exports = router;

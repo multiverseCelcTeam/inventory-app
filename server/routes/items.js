@@ -25,11 +25,30 @@ router.put("/:id", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.id);
     const updatedItem = await item.update(req.body, { where:{ id: req.params.id } });
-    res.send(item);
+    res.send(updatedItem);
   } catch (error) {
     next(error);
   }
 });
+router.delete("/:id", async (req, res, next) => {
+  try{
+    const item = await Item.findByPk(req.params.id);
+    await item.destroy();
+    res.sendStatus(200);
+  }
+  catch(error){
+    next(error);
+  }
+});
+router.post("/", async (req,res, next) => {
+  try{
+    const newItem = await Item.create(req.body);
+    res.json(newItem);
+  }
+  catch(error){
+    next(error);
+  }
+})
 
 
 module.exports = router;

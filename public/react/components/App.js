@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ItemsList } from './ItemsList';
+import { Routes, Route } from "react-router-dom";
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+import Home from '../pages/home';
+import ItemPage from '../pages/ItemPage';
 
 export const App = () => {
 
@@ -25,10 +27,9 @@ export const App = () => {
 	}, []);
 
 	return (
-		<main>	
-      <h1>Item Store</h1>
-			<h2>All things 🔥</h2>
-			<ItemsList items={items} />
-		</main>
+		<Routes>
+			<Route path="/" element={<Home items={items} />} />
+			<Route path="/:id" element={<ItemPage items={items} />}/>
+		</Routes>
 	)
 }

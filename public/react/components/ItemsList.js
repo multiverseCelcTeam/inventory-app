@@ -1,5 +1,5 @@
 import React from "react";
-import { Sauce } from "./Sauce";
+import { Item } from "./Item";
 
 export const ItemsList = ({ items }) => {
   if (!items) {
@@ -9,8 +9,8 @@ export const ItemsList = ({ items }) => {
   }
   return (
     <div>
-      {items.map((sauce, idx) => (
-        <Sauce sauce={sauce} key={idx} />
+      {items.map((item, idx) => (
+        <Item item={item} key={idx} />
       ))}
     </div>
   );

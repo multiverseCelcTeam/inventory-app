@@ -14,7 +14,6 @@ export const App = () => {
 			const response = await fetch(`${apiURL}/items`);
 			console.log("url: " + apiURL);
 			const itemsD = await response.json();
-			
 			setItems(itemsD);
 			console.log("Items set to: " + items);
 		} catch (err) {

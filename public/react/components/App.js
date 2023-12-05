@@ -4,12 +4,23 @@ import { Routes, Route } from "react-router-dom";
 import apiURL from '../api';
 import Home from '../pages/home';
 import ItemPage from '../pages/ItemPage';
+import ItemServices from '../services/Item';
+
 
 export const App = () => {
 
 	const [items, setItems] = useState([])
 
-	async function fetchItems(){
+	async function fetchItems() {
+		try {
+			const await = setItems(ItemServices.getItems())
+			console.log(items)
+		}
+		catch (error) {
+			console.log(error.message)
+		}
+
+		/*
 		try {
 			const response = await fetch(`${apiURL}/items`);
 			console.log("url: " + apiURL);
@@ -19,6 +30,7 @@ export const App = () => {
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
+		*/
 	}
 
 	useEffect(() => {

@@ -29,7 +29,7 @@ export const App = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Home items={items} setItems={setItems}/>} />
-			<Route path="/:id" element={<ItemPage items={items} />}/>
+			<Route path="/:id" element={<ItemPage items={items} setItems={setItems} />}/>
 		</Routes>
 	)
 }

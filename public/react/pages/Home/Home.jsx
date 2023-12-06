@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { ItemsList } from "../components/ItemsList";
-import ItemServices from '../services/Item.js';
+import { ItemsList } from "../../components/ItemsList/ItemsList";
+import ItemServices from '../../services/Item.js';
 import { Link } from "react-router-dom";
+import './Home.css';
 
 
 const Home = ({ items, setItems }) => {
@@ -21,6 +22,7 @@ const Home = ({ items, setItems }) => {
 
     return (
     <main>
+		<div className="test"></div>
         <h1>Item Store</h1>
         <h2>All things 🔥</h2>
         <Link to='/newItem'>Post New Item</Link>

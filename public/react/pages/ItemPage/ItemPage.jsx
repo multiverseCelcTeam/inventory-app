@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import itemsServices from "../services/Item";
+import itemsServices from "../../services/Item";
 
 const ItemPage = ({ items, setItems }) => {
     const id = useParams().id
@@ -8,11 +8,10 @@ const ItemPage = ({ items, setItems }) => {
 
     const handleDelete = (id) => {
         const filteredItems = items.filter((item) => item !== items.id)
-          console.log(filteredItems, 'item from filter')
-          setItems(filteredItems);
-          itemsServices.deleteItem(id);
-          navigate('/');
-       }
+        setItems(filteredItems);
+        itemsServices.deleteItem(id);
+        navigate('/');
+    }
 
     return (
         <>
@@ -21,6 +20,7 @@ const ItemPage = ({ items, setItems }) => {
             <h3>{item.description}</h3>
             <h3>{item.category}</h3>
             <img src={item.image} alt={item.name} />
+            <Link to={`/editItem/${id}`}>Edit Item</Link>
             <button onClick={ () => handleDelete(item.id)}>Delete Item</button>
             <Link to='/'>Back to Main Page</Link>
         </>

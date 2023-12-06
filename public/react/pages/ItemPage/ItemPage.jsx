@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import itemsServices from "../services/Item";
+import itemsServices from "../../services/Item";
 
 const ItemPage = ({ items, setItems }) => {
     const id = useParams().id

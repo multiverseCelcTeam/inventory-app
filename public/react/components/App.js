@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
-import Home from '../pages/home';
-import ItemPage from '../pages/ItemPage';
-import AddItem from './AddItem';
-import EditItem from './EditItem';
+import Home from '../pages/Home/Home.jsx';
+import ItemPage from '../pages/ItemPage/ItemPage.jsx';
+import AddItem from './AddItem/AddItem.js';
+import EditItem from './EditItem/EditItem.js';
 
 
 export const App = () => {

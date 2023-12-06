@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import itemServices from '../services/Item.js';
+import itemServices from '../../services/Item.js';
 
 const EditItem = ({ items, setItems }) => {
     const navigate = useNavigate();

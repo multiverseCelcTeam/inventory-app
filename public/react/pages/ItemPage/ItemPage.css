@@ -1,0 +1,83 @@
+.page {
+     display: flex;
+     flex-direction: row;
+     /* background-color: red; */
+     height: 100vh;
+     justify-content: center;
+}
+.item-section {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid black;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.item{
+    background-color: whitesmoke;
+    width: 50rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    /* border: 3px solid red; */
+}
+.item-image {
+    width: 18rem;
+    border: 3px solid rgb(198, 191, 191);
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+button {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    background-color: rgb(183, 177, 177);
+    text-decoration: none; 
+    border-radius: 5px;
+    border: 2px solid transparent;
+    padding: .9rem;
+}
+#edit-btn {
+    background-color: rgb(104, 160, 139);
+}
+#delete-btn {
+    background-color: rgb(228, 82, 82);
+}
+.link {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    background-color: transparent;
+}
+.buttons {
+    /* border: 3px solid red; */
+    margin: 1rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    height: 12rem;
+}
+button:hover {
+    border: 2px solid black;
+    cursor: pointer;
+}
+.tag {
+    background-color:rgb(61, 95, 123);
+    padding: 3px;
+    color: rgb(218, 216, 216);
+    border-radius: 4px;
+    border: 2px solid black;
+    margin-right: 3px;
+    margin-left: -22px;
+    padding: 1px;
+}
+h3 {
+    background-color: transparent;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+}

@@ -66,21 +66,60 @@ describe('When we call upon our /items route', () => {
       .expect(200);
   });
 
-  //   test('AND we send a post request with INVALID data, it throws validation error', async () => {
-  //     const invalidShow = {
-  //       "title": "test that should absolutely not pass under any circumstance",
-  //       "genre": "Fantasy",
-  //       "rating": null,
-  //       "status": null,
-  //       "available": true
-  //     };
+  test('AND we send a post request with INVALID data, it throws validation error', async () => {
+    const invalidItem1 = {
+      "name": "test that should absolutely not pass under any circumstance",
+      "price": 10,
+      "description": 'test',
+      "category": 'test',
+      "image": 'test.com'
+    };
 
-  //     const response = await request(app)
-  //       .post('/shows')
-  //       .send(invalidShow);
+    const invalidItem2 = {
+      "name": "",
+      "price": 10,
+      "description": 'test',
+      "category": 'test',
+      "image": 'test.com'
+    };
 
-  //     expect(response.body).toHaveProperty('errors');
-  //   });
+    const invalidItem3 = {
+      "name": "test",
+      "price": "invalid price",
+      "description": 'test',
+      "category": 'test',
+      "image": 'test.com'
+    };
+
+    const invalidItem4 = {
+      "name": "test",
+      "price": 10,
+      "description": '',
+      "category": 'test',
+      "image": 'test.com'
+    };
+
+    const response1 = await request(app)
+      .post('/items')
+      .send(invalidItem1);
+
+    const response2 = await request(app)
+      .post('/items')
+      .send(invalidItem2);
+
+    const response3 = await request(app)
+      .post('/items')
+      .send(invalidItem3);
+
+    const response4 = await request(app)
+      .post('/items')
+      .send(invalidItem4);
+
+    expect(response1.body).toHaveProperty('errors');
+    expect(response2.body).toHaveProperty('errors');
+    expect(response3.body).toHaveProperty('errors');
+    expect(response4.body).toHaveProperty('errors');
+  });
 
   test('AND we send a delete request, the proper status code is returned and a get req no longer returns the deleted obj', async () => {
     await request(app)

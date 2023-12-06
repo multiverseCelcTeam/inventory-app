@@ -1,46 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
-// import and prepend the api url to any fetch calls
-import apiURL from '../api';
 import Home from '../pages/home';
 import ItemPage from '../pages/ItemPage';
-import ItemServices from '../services/Item';
+import AddItem from './AddItem';
+import EditItem from './EditItem';
 
 
 export const App = () => {
-
 	const [items, setItems] = useState([])
-
-	async function fetchItems() {
-		try {
-			const await = setItems(ItemServices.getItems())
-			console.log(items)
-		}
-		catch (error) {
-			console.log(error.message)
-		}
-
-		/*
-		try {
-			const response = await fetch(`${apiURL}/items`);
-			console.log("url: " + apiURL);
-			const itemsD = await response.json();
-			setItems(itemsD);
-			console.log("Items set to: " + items);
-		} catch (err) {
-			console.log("Oh no an error! ", err)
-		}
-		*/
-	}
-
-	useEffect(() => {
-		fetchItems();
-	}, []);
 
 	return (
 		<Routes>
 			<Route path="/" element={<Home items={items} setItems={setItems}/>} />
 			<Route path="/:id" element={<ItemPage items={items} setItems={setItems} />}/>
+			<Route path="/newItem" element={<AddItem items={items} setItems={setItems} />}/>
+			<Route path="/editItem/:id" element={<EditItem items={items} setItems={setItems} />}/>
 		</Routes>
 	)
 }

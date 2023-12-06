@@ -1,6 +1,9 @@
 import { useState } from "react";
 import itemServices from "../services/Item";
+import { useNavigate } from "react-router-dom";
+
 const AddItem = ({items, setItems}) => {
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -26,6 +29,7 @@ const AddItem = ({items, setItems}) => {
     setDescription("");
     setCategory("");
     setImage("");
+    navigate('/');
   };
 
   return (

@@ -1,5 +1,16 @@
 import axios from "axios";
+import apiURL from "../api.js";
 
+const getItems = async () => {
+    try {
+        const response = await axios.get(`${apiURL}/items`)
+        console.log(response.data)
+        return response.data
+    }
+    catch(error) {
+        console.log(error.message)
+    }
+}
 const createItem = async (newItem) => {
   try {
     const response = await axios.post(`${apiURL}/items`, newItem);
@@ -18,4 +29,4 @@ const deleteItem = async (id) => {
   }
 }
 
-export default { createItem, deleteItem };
+export default { createItem, deleteItem, getItems };

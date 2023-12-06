@@ -3,6 +3,31 @@ import itemServices from "../../services/Item";
 import { useNavigate } from "react-router-dom";
 
 const AddItem = ({items, setItems}) => {
+  //Styling
+  const header = {
+      textAlign: "center", 
+      fontSize: "5vh"
+  }
+  const formStyle = {
+      display: "flex",
+      flexDirection: "column",
+      boxSizing: "border-box",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: "80vh",
+      margin: "5px"
+  }
+  const inputStyle = {
+    display: "flex",
+    height: "10vh",
+    width: "90vw",
+    fontSize: "8vh"
+  }
+  const submitStyle = {
+      height: "15vh",
+      fontSize: "5vh"
+  }
+
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -34,13 +59,14 @@ const AddItem = ({items, setItems}) => {
 
   return (
     <>
-      <h1>Add an Item</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 style={header}>Add an Item</h1>
+      <form onSubmit={handleSubmit} style={formStyle}>
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          style={inputStyle}
         />
 
         <input
@@ -48,6 +74,7 @@ const AddItem = ({items, setItems}) => {
           placeholder="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          style={inputStyle}
         />
 
         <input
@@ -55,6 +82,7 @@ const AddItem = ({items, setItems}) => {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          style={inputStyle}
         />
 
         <input
@@ -62,16 +90,18 @@ const AddItem = ({items, setItems}) => {
           placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+          style={inputStyle}
         />
 
         <input
           type="text"
-          placeholder="Image"
+          placeholder="Image Link"
           value={image}
           onChange={(e) => setImage(e.target.value)}
+          style={inputStyle}
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" style={submitStyle}>Submit & Add Item</button>
       </form>
     </>
   );

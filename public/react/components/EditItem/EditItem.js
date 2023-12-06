@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import itemServices from '../../services/Item.js';
 
 const EditItem = ({ items, setItems }) => {
@@ -96,6 +96,7 @@ const EditItem = ({ items, setItems }) => {
     
             <button type="submit" style={submitStyle}>Submit</button>
           </form>
+          <Link to={`/${id}`}>Go Back</Link>
         </>
     )
 };

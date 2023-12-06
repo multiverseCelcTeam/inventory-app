@@ -22,11 +22,13 @@ const Home = ({ items, setItems }) => {
 
     return (
     <main>
-		<div className="test"></div>
+		
         <h1>Item Store</h1>
-        <h2>All things 🔥</h2>
+        <h2>All things </h2>
+		<div className="flex-container">
         <Link to='/newItem'>Post New Item</Link>
         <ItemsList items={items} />
+		</div>
     </main>
     )
 };

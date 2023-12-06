@@ -1,5 +1,42 @@
-.test {
-    background-color: red;
-    height: 100px;
-    width: 100px;
+*{
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: whitesmoke;
+
+}
+h1, h2, h3{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.flex-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-box{
+    width: 200px;
+    height: 200px;
+    background-color: linear-gradient(white,gray);
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    line-height: 200px;
+    border-radius: 20px;
+    margin: 10px;
+}
+a:link{
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }

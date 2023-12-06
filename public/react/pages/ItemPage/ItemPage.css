@@ -38,10 +38,13 @@ button {
     text-decoration: none; 
     border-radius: 5px;
     border: 2px solid transparent;
-    padding: .9rem;
+    /* padding: .9rem; */
+    width: 6rem;
+    height: 3rem;
 }
 #edit-btn {
     background-color: rgb(104, 160, 139);
+    padding: .9rem;
 }
 #delete-btn {
     background-color: rgb(228, 82, 82);

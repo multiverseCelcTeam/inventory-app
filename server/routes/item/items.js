@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Item } = require("../../models");
+const { check, validationResult } = require('express-validator');
 
 // GET /sauce
 router.get("/", async (req, res, next) => {
@@ -21,15 +22,25 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req,res, next) => {
-  try{
-    const newItem = await Item.create(req.body);
-    res.json(newItem);
-  }
-  catch(error){
-    next(error);
-  }
-});
+router.post("/",
+  [check('name').not().isEmpty().trim().isAlphanumeric().isLength({ max: 35 }),
+    check('price').not().isEmpty().trim().isNumeric(),
+    check('description').not().isEmpty().trim().isLength({ max: 250 })],
+  async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+      res.json({ errors : errors.array() });
+    }
+
+    try{
+      const newItem = await Item.create(req.body);
+      res.json(newItem);
+    }
+    catch(error){
+      next(error);
+    }
+  });
 
 router.put("/:id", async (req, res, next) => {
   try {

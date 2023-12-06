@@ -27,9 +27,9 @@ const ItemPage = ({ items, setItems }) => {
           </div>
 
           <div className="buttons">
-            <button id="edit-btn"><Link to={`/editItem/${id}`} className="link">Edit</Link></button>
+            <Link to={`/editItem/${id}`} className="link"><button id="edit-btn">Edit</button></Link>
             <button onClick={() => handleDelete(item.id)} id="delete-btn">Delete</button>
-            <button><Link to="/" className="link">Back to Main Page</Link></button>
+            <Link to="/" className="link"><button>Back to Main Page</button></Link>
           </div>
         </div>
       </div>

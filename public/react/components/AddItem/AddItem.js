@@ -1,5 +1,5 @@
 import { useState } from "react";
-import itemServices from "../services/Item";
+import itemServices from "../../services/Item";
 import { useNavigate } from "react-router-dom";
 
 const AddItem = ({items, setItems}) => {

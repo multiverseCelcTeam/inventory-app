@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "./Item";
+import { Item } from "../Item/Item.js";
 
 export const ItemsList = ({ items }) => {
   if (!items) {

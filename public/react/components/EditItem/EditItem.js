@@ -57,39 +57,44 @@ const EditItem = ({ items, setItems }) => {
 
     return (
         <>
-          <h1>Edit Item</h1>
-          <form onSubmit={handleSubmit}>
+          <h1 style={header}>Edit Item</h1>
+          <form onSubmit={handleSubmit} style={formStyle}>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              style={inputStyle}
             />
     
             <input
               type="text"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              style={inputStyle}
             />
     
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              style={inputStyle}
             />
     
             <input
               type="text"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              style={inputStyle}
             />
     
             <input
               type="text"
               value={image}
               onChange={(e) => setImage(e.target.value)}
+              style={inputStyle}
             />
     
-            <button type="submit">Submit</button>
+            <button type="submit" style={submitStyle}>Submit</button>
           </form>
         </>
     )

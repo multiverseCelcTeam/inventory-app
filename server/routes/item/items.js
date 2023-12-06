@@ -23,7 +23,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/",
-  [check('name').not().isEmpty().trim().isAlphanumeric().isLength({ max: 35 }),
+  [check('name').not().isEmpty().trim().isAlphanumeric().isLength({ max: 100 }),
     check('price').not().isEmpty().trim().isNumeric(),
     check('description').not().isEmpty().trim().isLength({ max: 250 })],
   async (req, res, next) => {
@@ -32,25 +32,37 @@ router.post("/",
     if(!errors.isEmpty()) {
       res.json({ errors : errors.array() });
     }
-
-    try{
-      const newItem = await Item.create(req.body);
-      res.json(newItem);
-    }
-    catch(error){
-      next(error);
+    else {
+      try{
+        const newItem = await Item.create(req.body);
+        res.json(newItem);
+      }
+      catch(error){
+        next(error);
+      }
     }
   });
 
-router.put("/:id", async (req, res, next) => {
-  try {
-    const item = await Item.findByPk(req.params.id);
-    const updatedItem = await item.update(req.body, { where:{ id: req.params.id } });
-    res.send(updatedItem);
-  } catch (error) {
-    next(error);
-  }
-});
+router.put("/:id",
+  [check('name').not().isEmpty().trim().isLength({ max: 100 }),
+    check('price').not().isEmpty().trim().isNumeric(),
+    check('description').not().isEmpty().trim().isLength({ max: 250 })],
+  async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+      res.json({ errors : errors.array() });
+    }
+    else {
+      try {
+        const item = await Item.findByPk(req.params.id);
+        const updatedItem = await item.update(req.body, { where:{ id: req.params.id } });
+        res.send(updatedItem);
+      } catch (error) {
+        next(error);
+      }
+    }
+  });
 
 router.delete("/:id", async (req, res, next) => {
   try{

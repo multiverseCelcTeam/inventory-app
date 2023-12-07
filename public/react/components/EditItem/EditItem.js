@@ -96,7 +96,7 @@ const EditItem = ({ items, setItems }) => {
     
             <button type="submit" style={submitStyle}>Submit</button>
           </form>
-          <Link to={`/${id}`}>Go Back</Link>
+          <Link to={`/${id}`}><button style={submitStyle}>Back To Item</button></Link>
         </>
     )
 };

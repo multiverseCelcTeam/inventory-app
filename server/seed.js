@@ -1,8 +1,8 @@
 // replace with items later
-const { items } = require('./seedData.js');
+const { items, users } = require('./seedData.js');
 
 const { db } = require('./db');
-const Item = require('./models/Item.js');
+const { Item, User } = require('./models');
 
 const seed = async () => {
 
@@ -11,7 +11,14 @@ const seed = async () => {
     await db.sync({ force: true });
 
     // insert data
-    await Promise.all(items.map(item => Item.create(item)));
+    const itemArr = await Item.bulkCreate(items);
+    const userArr = await User.bulkCreate(users);
+
+    await userArr[0].setItems(itemArr[0]);
+    await userArr[0].setItems(itemArr[1]);
+    await itemArr[0].setUsers(userArr[0]);
+    await itemArr[1].setUsers(userArr[0]);
+    console.log(userArr[0].__proto__);
 
     console.log("db populated!");
   } catch (error) {

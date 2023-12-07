@@ -23,7 +23,7 @@ describe('When we call upon our /items route', () => {
     expect(response.body).toBeDefined();
   });
 
-  test('AND we send a parameterized get request, 1 show is returned', async () => {
+  test('AND we send a parameterized get request, 1 item is returned', async () => {
     const response = await request(app)
       .get('/items/1');
 

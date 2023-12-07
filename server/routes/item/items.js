@@ -1,10 +1,10 @@
 const express = require("express");
-const router = express.Router();
+const itemsRouter = express.Router();
 const { Item } = require("../../models");
 const { check, validationResult } = require('express-validator');
 
 // GET /sauce
-router.get("/", async (req, res, next) => {
+itemsRouter.get("/", async (req, res, next) => {
   try {
     const items = await Item.findAll();
     res.send(items);
@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+itemsRouter.get("/:id", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.id);
     res.send(item);
@@ -22,7 +22,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/",
+itemsRouter.post("/",
   [check('name').not().isEmpty().trim().isAlphanumeric().isLength({ max: 100 }),
     check('price').not().isEmpty().trim().isNumeric(),
     check('description').not().isEmpty().trim().isLength({ max: 250 })],
@@ -43,7 +43,7 @@ router.post("/",
     }
   });
 
-router.put("/:id",
+  itemsRouter.put("/:id",
   [check('name').not().isEmpty().trim().isLength({ max: 100 }),
     check('price').not().isEmpty().trim().isNumeric(),
     check('description').not().isEmpty().trim().isLength({ max: 250 })],
@@ -57,22 +57,22 @@ router.put("/:id",
       try {
         const item = await Item.findByPk(req.params.id);
         const updatedItem = await item.update(req.body, { where:{ id: req.params.id } });
-        res.send(updatedItem);
+        res.json({ message: "updated item with  " + req.params.id });
       } catch (error) {
         next(error);
       }
     }
   });
 
-router.delete("/:id", async (req, res, next) => {
+  itemsRouter.delete("/:id", async (req, res, next) => {
   try{
     const item = await Item.findByPk(req.params.id);
     await item.destroy();
-    res.sendStatus(200);
+    res.json({ message: "Deleted item with id: " + req.params.id });
   }
   catch(error){
     next(error);
   }
 });
 
-module.exports = router;
+module.exports = itemsRouter;

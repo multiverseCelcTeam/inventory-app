@@ -43,7 +43,7 @@ itemsRouter.post("/",
     }
   });
 
-  itemsRouter.put("/:id",
+itemsRouter.put("/:id",
   [check('name').not().isEmpty().trim().isLength({ max: 100 }),
     check('price').not().isEmpty().trim().isNumeric(),
     check('description').not().isEmpty().trim().isLength({ max: 250 })],
@@ -57,14 +57,14 @@ itemsRouter.post("/",
       try {
         const item = await Item.findByPk(req.params.id);
         const updatedItem = await item.update(req.body, { where:{ id: req.params.id } });
-        res.json({ message: "updated item with  " + req.params.id });
+        res.json({ message: "updated item " + updatedItem.name });
       } catch (error) {
         next(error);
       }
     }
   });
 
-  itemsRouter.delete("/:id", async (req, res, next) => {
+itemsRouter.delete("/:id", async (req, res, next) => {
   try{
     const item = await Item.findByPk(req.params.id);
     await item.destroy();

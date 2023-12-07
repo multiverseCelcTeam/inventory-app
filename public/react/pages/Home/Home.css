@@ -1,5 +1,117 @@
-.test {
-    background-color: red;
-    height: 100px;
-    width: 100px;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', san-serif;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --bg-color: #ffffff;
+    --text-color: #0f172a;
+    --main-color: #6b7280;
+    --other-color: #334155;
+    --big-font: 4.3rem;
+    --h2-font: 2.2rem;
+    --p-font: 1rem;
+}
+body{
+    color: var(--text-color);
+    background: var(--bg--color);
+}
+header{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index:1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 17px 11%;
+    border-bottom: 1px solid #f7f9fb;
+    transition: all .45s ease;
+
+}
+.logo img{
+    width: 100%;
+    height: auto;
+}
+.logo h1{
+    width: 100%;
+    height: auto;
+}
+.navbar{
+   display: flex;
+}
+.navbar a{
+    font-size: var(--p-font);
+    color: var(--other-color);
+    font-weight: 400;
+    padding: 10px 25px;
+    margin: 0 5px;
+    background: transparent;
+    border-radius: 30px;
+    transition: all .45s ease;
+}
+.navbar a:hover{
+    background: #f7f9fb;
+}
+.navbar a.active{
+    background: #f7f9fb;
+}
+.icons{
+    display: flex;
+    align-items: center;
+
+}
+.icons a{
+    height: 50px;
+    width: 50px;
+    background:#f7f9fb;
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 50%; 
+    color: var(--other-color);
+    font-size: 22px;
+    margin-right: 25px;
+    margin-left: 10px;
+    transition: all .45s ease;
+}
+.icons a:hover{
+    transform: scale(0.9);
+}
+#menu-icon{
+    color: var(--other-color);
+    font-size: 33px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+section{
+    padding: 100px 11% 90px;
+}
+.home{
+    height: 100vh;
+    width: 100%;
+    background-image: url(background.jpg);  
+    background-color: #e3f4fa;
+    background-size: cover;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 100%;
+}
+.home-img img{
+    width: 100%;
+    height: auto;
+}
+.home-text h2{
+    font-size: 30px;
+    font-weight: 500;
+    background-color: #d3d8f8;
 }

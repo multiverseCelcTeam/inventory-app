@@ -1,9 +1,8 @@
 const Item = require('./Item');
-const Sauce = require('./Sauce');
-
+const User = require('./User');
 module.exports = {
   Item,
-  Sauce
+  User
 };
 
 

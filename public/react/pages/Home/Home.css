@@ -7,9 +7,9 @@
     list-style: none;
 }
 :root{
-    --bg-color: #ffffff;
-    --text-color: #0f172a;
-    --main-color: #6b7280;
+    --bg-color: white;
+    --text-color: black;
+    --main-color: black;
     --other-color: #334155;
     --big-font: 4.3rem;
     --h2-font: 2.2rem;
@@ -20,7 +20,7 @@ body{
     background: var(--bg--color);
 }
 header{
-    position: fixed;
+    position: relative;
     right: 0;
     top: 0;
     width: 100%;
@@ -30,7 +30,7 @@ header{
     justify-content: space-between;
     background: transparent;
     padding: 17px 11%;
-    border-bottom: 1px solid #f7f9fb;
+    border-bottom: 1px solid white;
     transition: all .45s ease;
 
 }
@@ -41,6 +41,8 @@ header{
 .logo h1{
     width: 100%;
     height: auto;
+    color:black;
+  
 }
 .navbar{
    display: flex;
@@ -56,20 +58,19 @@ header{
     transition: all .45s ease;
 }
 .navbar a:hover{
-    background: #f7f9fb;
+    background: white;
 }
 .navbar a.active{
-    background: #f7f9fb;
+    background: white;
 }
 .icons{
     display: flex;
     align-items: center;
-
 }
 .icons a{
     height: 50px;
     width: 50px;
-    background:#f7f9fb;
+    background:white;
     display: inline-flex;
     align-items: center;
     justify-items: center;
@@ -97,7 +98,7 @@ section{
     height: 100vh;
     width: 100%;
     background-image: url(background.jpg);  
-    background-color: #e3f4fa;
+    background-color: white;
     background-size: cover;
     position: relative;
     display: grid;
@@ -109,9 +110,20 @@ section{
 .home-img img{
     width: 100%;
     height: auto;
-}
+ }
 .home-text h2{
-    font-size: 30px;
+    font-size: 50px;
     font-weight: 500;
-    background-color: #d3d8f8;
+    width: 100%;
+    background-color: white;
+}
+.btn{
+    display: inline-block;
+    padding: 16px 30px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    font-size: 15px;
+    letter-spacing: 1 px;
+    border-radius:30px;
+    transition: all .45s ease;
 }

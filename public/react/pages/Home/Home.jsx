@@ -9,7 +9,7 @@ import search from './search.png';
 
 
 
-const Home = ({ items, setItems }) => {
+const Home = ({ items, setItems, user }) => {
 	async function fetchItems() {
 		try {
 			const items = await ItemServices.getItems();
@@ -31,7 +31,8 @@ const Home = ({ items, setItems }) => {
 			<h1>CELC Inc.</h1></a>
 		<ul class="navbar">
 			<li><a href="#home" class="active">Home</a></li>
-			<li><Link to="/loginsignup" class= "active">Admin</Link></li>
+			<li><Link to="/login" class= "active">Admin</Link></li>
+			{ user && <li><Link to="/cart" class= "active">Cart</Link></li>}
 		</ul>
 
 		<div class="icons">

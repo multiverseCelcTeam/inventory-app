@@ -1,5 +1,6 @@
 import React from "react";
 import { Item } from "../Item/Item.js";
+import './ItemsList.css';
 
 export const ItemsList = ({ items }) => {
   if (!items) {
@@ -8,7 +9,7 @@ export const ItemsList = ({ items }) => {
 	console.log("Items length: " + items.length);
   }
   return (
-    <div>
+    <div className="flex-container">
       {items.map((item, idx) => (
         <Item item={item} key={idx} />
       ))}

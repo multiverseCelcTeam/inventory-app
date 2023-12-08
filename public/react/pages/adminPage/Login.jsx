@@ -45,9 +45,9 @@ const LoginSignup = ({ user, setUser }) => {
 		</ul>
 
 		<div class="icons">
-			<img src={search}/>
+			{/*<img src={search}/>*/}
 			<a href="#">search</a>
-			<img src={cart}/>
+			{/*<img src={cart}/>*/}
 			<a href="#">cart</a>
 		</div>
 		</header>

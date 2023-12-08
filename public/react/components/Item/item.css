@@ -1,34 +1,32 @@
-.flex-container {
-    display: row;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    color: white;
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
   }
   .flex-box{
-    padding-top: 5%;
     text-align: center;
     width: 200px;
     height: 250px;
-    background: linear-gradient(gray,whitesmoke);
+    background: linear-gradient(rgb(199, 199, 199),whitesmoke);
     border-radius: 20px;
     margin:10px;
   }
   
   /* Style for the h3 element */
-  .flex-container h3 {
+  .flex-box h3 {
     align-content: center;
     color:black;
     margin: 10px 20;
     width: 80%;
     height: auto;
-    font-size: 12px;
+    font-size: 11px;
     justify-content: center;
   }
   
   /* Style for the image */
-  .flex-container img {
-    width: 75;
-    height: auto; 
-    
+  .flex-box img {
+    width: 60%;
+    height: 150px; 
+    border-radius: 10px;
   }

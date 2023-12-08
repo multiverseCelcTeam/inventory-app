@@ -12,9 +12,9 @@ export const App = () => {
 	const [items, setItems] = useState([]);
 	// const [user, setUser] = useState(null);
 
-	const [user, setUser] = useState([], () => {
+	const [user, setUser] = useState(null, () => {
 		const localData = localStorage.getItem('loggedInUser');
-		return localData ? JSON.parse(localData) : [];
+		return localData ? JSON.parse(localData) : null;
 	});
 
 	return (

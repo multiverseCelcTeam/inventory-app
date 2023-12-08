@@ -1,7 +1,9 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import itemsServices from "../../services/Item";
+import userServices from '../../services/User';
 import "./ItemPage.css";
-const ItemPage = ({ items, setItems }) => {
+
+const ItemPage = ({ items, setItems, user }) => {
   const id = useParams().id;
   const item = items.find((item) => item.id === Number(id));
   const navigate = useNavigate();
@@ -12,6 +14,16 @@ const ItemPage = ({ items, setItems }) => {
     itemsServices.deleteItem(id);
     navigate("/");
   };
+
+  const handleAddToCart = (removeOrAdd, userId, itemId) => {
+    userServices.editCart(removeOrAdd, userId, itemId)
+    alert('added to cart')
+  }
+
+  const handleRemoveFromCart = (removeOrAdd, userId, itemId) => {
+    userServices.editCart(removeOrAdd, userId, itemId)
+    alert('removed from cart')
+  }
 
   return (
     <>
@@ -29,6 +41,10 @@ const ItemPage = ({ items, setItems }) => {
           <div className="buttons">
             <Link to={`/editItem/${id}`} className="link"><button id="edit-btn">Edit</button></Link>
             <button onClick={() => handleDelete(item.id)} id="delete-btn">Delete</button>
+            {user && <>
+                <button onClick={() => handleAddToCart('add', 1, item.id)}>Add to Cart</button>
+                <button onClick={() => handleRemoveFromCart('remove', 1, item.id)}>Remove from Cart</button>
+            </> }
             <Link to="/" className="link"><button>Back to Main Page</button></Link>
           </div>
         </div>

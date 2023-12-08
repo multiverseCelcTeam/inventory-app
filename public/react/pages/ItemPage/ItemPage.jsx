@@ -1,12 +1,28 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import itemsServices from "../../services/Item";
 import userServices from '../../services/User';
+import { useState, useEffect } from "react";
 import "./ItemPage.css";
 
 const ItemPage = ({ items, setItems, user }) => {
   const id = useParams().id;
-  const item = items.find((item) => item.id === Number(id));
+  //let item = items.find((item) => item.id === Number(id));
   const navigate = useNavigate();
+
+  const [item, setItem] = useState({});
+  async function fetchItems() {
+		try {
+			const items = await itemsServices.getItems();
+			setItem(items.find((item) => item.id === Number(id)));
+		}
+		catch (error) {
+			console.log(error.message)
+		}
+	}
+	useEffect(() => {
+		fetchItems();
+	}, []);
+
 
   const handleDelete = (id) => {
     const filteredItems = items.filter((item) => item !== items.id);

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ItemsList } from "../../components/ItemsList/ItemsList";
 import ItemServices from '../../services/Item.js';
 import { Link } from "react-router-dom";
@@ -10,6 +10,27 @@ import search from './search.png';
 
 
 const Home = ({ items, setItems, user }) => {
+	const [search, setSearch] = useState('');
+	const [showAll, setShowAll] = useState(true);
+
+	const handleSearch = (e) => {
+		e.preventDefault();
+		const searchData = search;
+		setSearch(searchData);
+		// fixes bug i had where hitting enter would sometimes show all instead of filter results
+		showAll ? setShowAll(!showAll) : setShowAll(showAll);
+	};
+
+	const itemsToShow = showAll
+    ? items
+    : items.filter((item) =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+	const showBtn = () => {
+		setShowAll(true);
+	};
+
 	async function fetchItems() {
 		try {
 			const items = await ItemServices.getItems();
@@ -38,6 +59,13 @@ const Home = ({ items, setItems, user }) => {
 		<div class="icons">
 			
 			<a href="#">search</a>
+			<form onSubmit={handleSearch}>
+				<input value={search} onChange={(e) => setSearch(e.target.value)} />
+				<div>
+				<button type="submit">Search</button>
+				</div>
+			</form>
+			<button onClick={showBtn}>Show All</button>
 		
 			<a href="#">cart</a>
 		</div>
@@ -52,7 +80,7 @@ const Home = ({ items, setItems, user }) => {
 		  </div>
 		</section>
 		<Link to='/newItem' class = "btn">Post New Item</Link>
-        <ItemsList items={items} />
+        <ItemsList items={itemsToShow} />
 		</body>
     </main>
     )
